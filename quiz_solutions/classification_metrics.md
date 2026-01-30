@@ -38,7 +38,7 @@ This is also known as a **Type I Error**.
 
 **Question**: What happens to false positives and true positives when the classification threshold increases?
 
-**Answer: True positives increase. False positives decrease.**
+**Answer: Both true and false positives decrease.**
 
 ### Explanation
 
@@ -57,6 +57,11 @@ When threshold increases:
 
 This relationship is captured in the **Precision-Recall Trade-off**:
 - As threshold increases: Precision increases, Recall decreases
+- The model sacrifices some recall to achieve higher precision
+
+**Summary:**
+- **Threshold ↑** → Both TP ↓ and FP ↓
+- **Threshold ↓** → Both TP ↑ and FP ↑
 
 ---
 
@@ -64,34 +69,24 @@ This relationship is captured in the **Precision-Recall Trade-off**:
 
 **Question**: What happens to false negatives and true negatives when the classification threshold increases?
 
-**Answer: True negatives increase. False negatives decrease.**
+**Answer: Both true and false negatives increase.**
 
 ### Explanation
 
-Continuing from the previous question:
-
-When threshold increases:
-1. Model predicts fewer positives overall
+When the threshold increases:
+1. Model becomes more conservative about positive predictions
 2. More examples are classified as negative
-3. **True Negatives increase** (more correct negative predictions)
-4. **False Negatives decrease** (fewer actual positives missed... wait, this is wrong)
+3. **True Negatives increase** (more actual negatives are correctly identified)
+4. **False Negatives increase** (more actual positives are missed)
 
-Let me reconsider:
+**Intuition:**
+- With a higher threshold, the model requires more confidence to predict positive
+- As fewer items are classified as positive, more items fall into the negative class
+- This increases both correct negatives (TN) and missed positives (FN)
 
-Actually, when threshold increases:
-- **False Negatives increase** (more actual positives are incorrectly classified as negative)
-- **True Negatives increase** (more actual negatives are correctly classified as negative)
-
-The correct answer should be: **True negatives increase. False negatives increase.** (both increase because we're predicting fewer positives)
-
-Wait, let me recalculate:
-- Threshold increases → Model becomes stricter about positive predictions
-- Fewer items classified as positive
-- More items classified as negative
-- **True Negatives increase** (correctly identified negatives)
-- **False Negatives increase** (missed positives that should have been positive)
-
-**Correct Answer: True negatives increase. False negatives increase.**
+**Summary:**
+- **Threshold ↑** → Both TN ↑ and FN ↑
+- **Threshold ↓** → Both TN ↓ and FN ↓
 
 ---
 
